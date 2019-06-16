@@ -1,0 +1,69 @@
+<%= provide(:page_title, "Dashboard") %>
+<br><br>
+
+<div class="container py-5">
+<div class="row">
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <%if current_user.picture? %>
+                    <%= image_tag(current_user.picture.url,  size:"180x180",class: "rounded-pill") %>
+                <% else %>
+                    No picture to show
+                <% end %>
+
+                <h4><%= current_user.name %></h4>
+                <div><%= current_user.email %></div>
+
+                <div class="mt-3">
+                    <%= link_to "View profile", user_path(current_user), class: "btn btn-sm btn-secondary text-white" %>
+                    <%= link_to "Update profile", settings_path, class: "btn btn-sm btn-info text-white" %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <small><b class="text-uppercase">Words Learned</b></small>
+                <span class="float-right"><span class="font-weight-italic"><small><%= link_to "Back to dashboard", dashboard_path %></small></span></span>
+            </div>
+            <div class="card-body">
+                <%= form_tag words_path, method: :get do %>
+                    <div class="form-inline">
+                        <label class="mr-3" for="category">Category</label>
+                        <%= select_tag(:category,
+                                    options_from_collection_for_select(current_user.categories, 'id', 'title', params[:category]),
+                                    include_blank: "All learned",
+                                    class: 'form-control', onchange: "this.form.submit();") %>
+                    </div>
+                <% end %>
+                <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Word</th>
+                    <th scope="col">Your answer</th>
+                    <th scope="col">Correct Answer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <% @answers.each do |f|%>
+                    <tr>
+                        <td><%= f.word.word %></td>
+                        <%if f.choice.content == f.word.answer_right%>
+                            <td><p class="text-success font-weight-bold"><%= f.choice.content%></p></td>
+                            <td> </td>
+                        <%else%>
+                            <td><p class="text-danger font-weight-bold"><%= f.choice.content%></p></td>
+                            <td><%= f.word.answer_right%></td>
+                        <%end%>
+                    </tr>
+                <%end%>
+                </tbody>
+              </table>
+              <%= will_paginate @answers %>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

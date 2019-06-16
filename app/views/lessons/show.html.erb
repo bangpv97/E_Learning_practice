@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-center">
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-sm-6">
+                    <h1><%= @lesson.category.name %></h1>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <h2 class="text-muted"><%= t "result" %><span class="text-warning"><%= @lesson.get_correct.count %></span> of <%= @lesson.answers.count %></h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <table class="table results">
+                    <tr>
+                        <th><%= t "word" %></th>
+                        <th><%= t "your_answer" %></th>
+                        <th><%= t "correct_answer" %></th>
+                        <th></th>
+                    </tr>
+
+                    <% @lesson.results.each do |result| %>
+                        <tr>
+                            <td><%= result.word.name %></td>
+                            <td><%= result.answer.content %></td>
+                            <td><%= result.word.answer_right %></td>
+                            <td class="text-center">
+                        <%if result.answer.content === result.word.answer_right%>
+                            <td><i class="fa fa-check" style="color:green"></i></td>
+                        <%else%>
+                            <td><i class="fa fa-close" style="color:red"></i></td>
+                        <%end%>
+                            </td>
+                        </tr>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

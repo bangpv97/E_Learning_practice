@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-center">
+            <div class="row" style="margin-left: 10px;">
+                <div class="col-sm-9">
+                    <h1><%= @lesson.category.name %></h1>
+                </div>
+                <div class="col-sm-3 text-right">
+                    <h3 class="text-muted"><span class="text-warning"><%= @lesson.results.count + 1%> of <%= @lesson.category.words.count %></h3>
+                </div>
+            </div>
+
+            <div class="card card-choice p-3">
+                <h2 class="text-warning text-center"><%= @specific_word.name %></h2>
+
+                <div class="choices">
+                           <% @specific_word.answers.each do |choose| %>
+                                <%= form_for [@lesson, @result] do |f|%>
+                                    <%= f.hidden_field :word_id, value: @specific_word.id %>
+                                    <%= f.hidden_field :answer_id, value: choose.id %>
+                                    <%= f.submit choose.content, class: "btn btn-outline-secondary btn-block" %><br>
+                                <%end%>
+                        <%end%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

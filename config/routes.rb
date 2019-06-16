@@ -9,4 +9,9 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   resources :users, only: %i(new create show)
+  resources :categories
+  resources :words, only: [:index]
+  resources :lessons do
+    resources :results
+  end
 end

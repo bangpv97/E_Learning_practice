@@ -5,3 +5,4 @@ email_length: 255
 pass_length: 6
 size_ava: 80
 checked: "1"
+notchecked: "0"

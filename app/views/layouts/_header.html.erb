@@ -6,6 +6,7 @@
         <li><%= link_to t("static_pages.home.title"), root_path %></li>
         <li><%= link_to t("static_pages.about.title"), about_path %></li>
         <% if logged_in? %>
+          <li><%= link_to t("category"), categories_path %></li>
           <li class="dropdown">
             <%= link_to t("account"), "#", "data-toggle": "dropdown", class: "dropdown-toggle" %>
             <ul class="dropdown-menu">

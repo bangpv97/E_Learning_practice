@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   has_many :lessons
   has_many :categories, through: :lessons
+  has_many :words, through: :lessons
   has_many :activities
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: :follower_id, dependent: :destroy
@@ -47,5 +48,10 @@ class User < ApplicationRecord
 
   def forget
     update_attribute :remember_digest, nil
+  end
+
+
+  def learned_words
+    self.words.count
   end
 end

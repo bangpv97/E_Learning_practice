@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'words/index'
   root "static_pages#home"
 
   get "/about", to: "static_pages#about"
@@ -13,4 +14,5 @@ Rails.application.routes.draw do
   resources :lessons do
     resources :results
   end
+  resources :words
 end

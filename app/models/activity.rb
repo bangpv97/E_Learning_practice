@@ -1,4 +1,6 @@
 class Activity < ApplicationRecord
+  belongs_to :action, polymorphic: true
   belongs_to :user
-  enum action_type: {start_lesson: 0, finish_lesson: 1, follow: 2, un_follow: 3}
+  enum target_type: {followed: 0, unfollow: 1}
+  default_scope -> {order(created_at: :desc)}
 end

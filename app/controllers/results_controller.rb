@@ -6,7 +6,7 @@ class ResultsController < ApplicationController
       @lesson.update_attribute :score, @lesson.correct_answers.count
       redirect_to @lesson
     else
-      @answer = @lesson.results.build
+      @result = @lesson.results.build
     end
     @progress = @lesson.results.count
   end

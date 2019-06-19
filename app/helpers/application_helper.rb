@@ -15,4 +15,8 @@ module ApplicationHelper
       current_user.active_relationships.build
     end
   end
+
+  def target_user target_id
+    User.find_by id: target_id
+  end
 end

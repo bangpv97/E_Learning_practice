@@ -14,10 +14,12 @@ ActiveRecord::Schema.define(version: 2019_06_14_081151) do
 
   create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "action_type", default: "0", null: false
-    t.integer "target_id"
+    t.string "action_type"
+    t.bigint "action_id"
+    t.integer "target_type", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["action_type", "action_id"], name: "index_activities_on_action_type_and_action_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 

@@ -67,7 +67,7 @@ en:
   word: "Word"
   your_answer: "Your Answer"
   correct_answer: "Correct Answer"
-  of: "/"
+  of: " of "
   lesson: "Lesson"
   lesson_word: "Lesson word"
   word_list: "Word List"
@@ -80,10 +80,15 @@ en:
   following: "Following"
   followers: "Followers"
   follow: "Follow"
+  followed: "followed "
   unfollow: "Unfollow"
+  ago: " ago"
   learned:
     one: "You learned %{count} word"
     other: "You learned %{count} words"
+  answer:
+    one: "You answered correctly %{count} word"
+    other: "You answered correctly %{count} words"
   form:
     create_account: "Create Account"
     name: "Name"

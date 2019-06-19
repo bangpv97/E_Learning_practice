@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :logged_in_user, only: %i(index)
   def index
-    @categories = Category.newest.paginate(page: params[:page], per_page: Settings.per_page).has_word?
+    @categories = Category.newest.paginate(page: params[:page], per_page: Settings.per_page)
     if params[:learned] == Settings.checked
       @categories = current_user.categories.newest.paginate page: params[:page], per_page: Settings.per_page
     elsif params[:learned] == Settings.notchecked

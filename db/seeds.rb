@@ -9,7 +9,9 @@
 User.create!(name: "admin",
              email: "admin@gmail.com",
              password: "123456",
-             password_confirmation: "123456")
+             password_confirmation: "123456",
+             remote_avatar_url: (Faker::Avatar.image),
+             role: :admin)
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
@@ -17,7 +19,8 @@ User.create!(name: "admin",
   User.create!(name:  name,
                email: email,
                password: password,
-               password_confirmation: password)
+               password_confirmation: password,
+               remote_avatar_url: (Faker::Avatar.image))
 end
 
 users = User.all

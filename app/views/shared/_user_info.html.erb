@@ -1,0 +1,4 @@
+<%= link_to (image_tag current_user.avatar.url :small if current_user.avatar?), current_user %>
+<h1><%= current_user.name %></h1>
+<span><%= link_to t("view_profile"), current_user %></span>
+<span><%= link_to t("Word learned"), words_path(learned: 1) %></span>

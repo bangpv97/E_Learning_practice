@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, except: %i(new show create)
-  before_action :load_user, except: %i(new index create)
+  before_action :load_user, except: %i(new index create dashboard)
   before_action :correct_user, only: %i(edit update)
 
   def index
